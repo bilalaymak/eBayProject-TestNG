@@ -18,6 +18,7 @@ import java.util.function.Function;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 public class ReusableMethods {
+    WebDriver driver;
     public static String getScreenshot(String name) throws IOException {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
@@ -30,6 +31,31 @@ public class ReusableMethods {
         // save the screenshot to the path given
         FileUtils.copyFile(source, finalDestination);
         return target;
+    }
+
+
+    //Take ScreenShot of all page
+
+    public void takeScreenshotAllScreen(){
+        String date = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String filePath = "testOutput/screenshots/screenshot" + date + ".png";
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        try {
+            FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE), new File(filePath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //webElement ScreenShot
+    public void takeScreenshotWebElement(WebElement element){
+        String date = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String filePath = "testOutput/screenshots/webElementScreenShots/webElementScreenShot" + date + ".png";
+        try {
+            FileUtils.copyFile(element.getScreenshotAs(OutputType.FILE), new File(filePath));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //========Switching Window=====//

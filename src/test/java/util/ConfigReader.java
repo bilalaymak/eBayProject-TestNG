@@ -12,7 +12,7 @@ public class ConfigReader {
     //    creating a static bloc to run FIRST
     static {
 //        path of properties file
-        String path = "testData/configuration.properties";
+        String path = "testData/Config.properties";
         try {
             FileInputStream fileInputStream = new FileInputStream(path);
             properties = new Properties();

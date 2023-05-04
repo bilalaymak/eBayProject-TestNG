@@ -1,2 +1,31 @@
-package tests;public class LoginTest {
+package tests;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+import pages.LoginPage;
+import util.ConfigReader;
+import util.Driver;
+
+public class LoginTest {
+    LoginPage loginPage;
+
+    @Test
+    public void testLogin() {
+        Driver.getDriver().get(ConfigReader.getProperty("eBayUrl"));
+
+        loginPage = new LoginPage();
+        loginPage.signInButton.click();
+
+        loginPage.emailUserNameBox.sendKeys("validEmail");
+        loginPage.continueButton.click();
+
+        loginPage.passwordsBox.sendKeys("validPassword");
+        loginPage.loginButton.click();
+
+
+
+
+
+
+    }
 }
