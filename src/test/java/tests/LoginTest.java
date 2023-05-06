@@ -16,10 +16,10 @@ public class LoginTest {
         loginPage = new LoginPage();
         loginPage.signInButton.click();
 
-        loginPage.emailUserNameBox.sendKeys("validEmail");
+        loginPage.emailUserNameBox.sendKeys(ConfigReader.getProperty("validEmail"));
         loginPage.continueButton.click();
 
-        loginPage.passwordsBox.sendKeys("validPassword");
+        loginPage.passwordsBox.sendKeys(ConfigReader.getProperty("validPassword"));
         loginPage.loginButton.click();
 
 

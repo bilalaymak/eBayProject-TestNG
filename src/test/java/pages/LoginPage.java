@@ -2,9 +2,13 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import util.Driver;
 
 public class LoginPage {
-
+    public LoginPage(){
+        PageFactory.initElements(Driver.getDriver(),this);
+    }
     @FindBy(xpath = "(//a[text() ='Sign in'])[1]")
     public WebElement signInButton;
 
